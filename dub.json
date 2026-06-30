@@ -1,0 +1,34 @@
+{
+    "name": "d-meshoptimizer",
+    "description": "D bindings for zeux/meshoptimizer — static, no shim (header is extern C).",
+    "license": "MIT",
+    "authors": ["Alexander Shagarov"],
+
+    "sourcePaths": ["source"],
+    "importPaths": ["source"],
+
+    "preBuildCommands-posix": [
+        "cd \"$PACKAGE_DIR\" && git submodule update --init --recursive --quiet",
+        "cmake -S \"$PACKAGE_DIR\" -B \"$PACKAGE_DIR/build\" -DCMAKE_BUILD_TYPE=Release",
+        "cmake --build \"$PACKAGE_DIR/build\" -j --target meshoptimizer"
+    ],
+
+    "lflags-posix": [
+        "-L$PACKAGE_DIR/build/extern/meshoptimizer"
+    ],
+
+    "libs-posix": ["meshoptimizer", "stdc++", "m"],
+
+    "configurations": [
+        {
+            "name": "library",
+            "targetType": "staticLibrary"
+        },
+        {
+            "name": "simplify",
+            "targetType": "executable",
+            "targetName": "simplify",
+            "mainSourceFile": "examples/simplify.d"
+        }
+    ]
+}
