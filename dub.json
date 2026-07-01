@@ -19,9 +19,9 @@
     "libs-osx": ["meshoptimizer", "c++", "m"],
 
     "preBuildCommands-windows": [
-        "git -C \"%PACKAGE_DIR%\" submodule update --init --recursive",
-        "cmake -S \"%PACKAGE_DIR%\" -B \"%PACKAGE_DIR%/build\"",
-        "cmake --build \"%PACKAGE_DIR%/build\" --config Release --target meshoptimizer"
+        "git -C \"$PACKAGE_DIR\" submodule update --init --recursive",
+        "cmake -S \"$PACKAGE_DIR\" -B \"$PACKAGE_DIR/build\"",
+        "cmake --build \"$PACKAGE_DIR/build\" --config Release --target meshoptimizer"
     ],
     "lflags-windows": ["$PACKAGE_DIR/build/extern/meshoptimizer/Release/meshoptimizer.lib"],
     "dflags-windows": ["-mscrtlib=msvcrt"],
