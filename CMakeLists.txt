@@ -16,7 +16,7 @@ set(MESHOPT_BUILD_GLTFPACK    OFF CACHE BOOL "" FORCE)
 set(MESHOPT_INSTALL           OFF CACHE BOOL "" FORCE)
 set(BUILD_SHARED_LIBS         OFF CACHE BOOL "" FORCE)
 
-add_subdirectory(extern/meshoptimizer EXCLUDE_FROM_ALL)
+add_subdirectory(extern/meshoptimizer)
 
 # meshoptimizer's own CMakeLists.txt exposes:
 #   meshoptimizer — STATIC library target (when MESHOPT_BUILD_SHARED_LIBS=OFF)
