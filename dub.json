@@ -12,12 +12,19 @@
         "cmake -S \"$PACKAGE_DIR\" -B \"$PACKAGE_DIR/build\" -DCMAKE_BUILD_TYPE=Release",
         "cmake --build \"$PACKAGE_DIR/build\" -j --target meshoptimizer"
     ],
-
     "lflags-posix": [
         "-L$PACKAGE_DIR/build/extern/meshoptimizer"
     ],
+    "libs-linux": ["meshoptimizer", "stdc++", "m"],
+    "libs-osx": ["meshoptimizer", "c++", "m"],
 
-    "libs-posix": ["meshoptimizer", "stdc++", "m"],
+    "preBuildCommands-windows": [
+        "git -C \"%PACKAGE_DIR%\" submodule update --init --recursive",
+        "cmake -S \"%PACKAGE_DIR%\" -B \"%PACKAGE_DIR%/build\"",
+        "cmake --build \"%PACKAGE_DIR%/build\" --config Release --target meshoptimizer"
+    ],
+    "lflags-windows": ["$PACKAGE_DIR/build/extern/meshoptimizer/Release/meshoptimizer.lib"],
+    "dflags-windows": ["-mscrtlib=msvcrt"],
 
     "configurations": [
         {
